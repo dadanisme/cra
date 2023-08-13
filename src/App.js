@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Fasepertanyaan from "./FasePertanyaan";
+import FaseLogin from "./FaseLogin";
+import FaseResult from "./FaseResult";
 
 function App() {
+  const [fase, setFase] = useState(1);
+  const [name, setName] = useState("");
+  const [result, setResult] = useState("");
+
+  if (fase === 1) {
+    return (
+      <FaseLogin
+        onNext={(name) => {
+          setName(name);
+          setFase(2);
+        }}
+      />
+    );
+  }
+
+  if (fase === 2) {
+    return (
+      <Fasepertanyaan
+        onNext={(result) => {
+          setResult(result);
+          setFase(3);
+        }}
+      />
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FaseResult
+      name={name}
+      result={result}
+      onNext={() => {
+        setFase(1);
+        setName("");
+        setResult("");
+      }}
+    />
   );
 }
 
