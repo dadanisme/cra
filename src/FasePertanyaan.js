@@ -31,13 +31,16 @@ export default function Fasepertanyaan({ onNext }) {
       return;
     }
 
-    const result = await fetch("https://app.lskpengantin.id/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(answArr),
-    }).then((res) => res.json());
+    const result = await fetch(
+      "https://plankton-app-5fia8.ondigitalocean.app/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(answArr),
+      }
+    ).then((res) => res.json());
 
     onNext(result.result);
   };
