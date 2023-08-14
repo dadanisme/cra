@@ -32,7 +32,7 @@ export default function Fasepertanyaan({ onNext }) {
     }
 
     const result = await fetch(
-      "https://plankton-app-5fia8.ondigitalocean.app/",
+      "https://jellyfish-app-ngzec.ondigitalocean.app/",
       {
         method: "POST",
         headers: {
